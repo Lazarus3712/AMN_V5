@@ -95,7 +95,6 @@ public class MainActivity extends Activity {
     }
 
     private void Event() throws Exception {
-
         try {
             five.setOnClickListener(new View.OnClickListener() {
                 @Override
