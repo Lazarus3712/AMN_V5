@@ -24,8 +24,20 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class MainActivity extends Activity {
+    Handler hand = new Handler();
     private BluetoothAdapter bluetoothAdapter = null;
     private BluetoothSocket clientSocket = null;
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                clientSocket.getOutputStream().write(120);
+            } catch (Exception e) {
+                Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+            }
+            hand.postDelayed(runnable, 1000);
+        }
+    };
     private PowerManager pm;
     private PowerManager.WakeLock pmw;
     private ToggleButton bluet;
@@ -43,22 +55,6 @@ public class MainActivity extends Activity {
     private Button beep;
     private TextView speed;
     private boolean conect = false;
-
-    Handler hand = new Handler();
-    Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            try {
-                clientSocket.getOutputStream().write(120);
-            }
-            catch (Exception e)
-            {
-                Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-            }
-            hand.postDelayed(runnable,1000);
-        }
-    };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
