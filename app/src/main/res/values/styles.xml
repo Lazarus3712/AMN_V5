@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.DialogWhenLarge">
+        <item name="android:actionBarSize">45dp</item>
+        <item name="android:actionBarStyle">@style/st</item>
+    </style>
+
+    <style name="st" parent="@android:style/Widget.ActionBar">
+        <item name="android:background">#1e1e1e</item>
+    </style>
+
+</resources>
